@@ -1,0 +1,81 @@
+#!/bin/bash
+clear
+# Initialise the Title Art
+file1="../art/titleart.ben"
+while IFS= read -r line
+do
+    echo "$line"
+done <"$file1"
+echo
+#If the user already has the floppy disk it allows them to skip the text so they can put in the disk. If not you get the normal text
+floppystate=`cat ../logic/floppylogic.ben`
+            if [ "$floppystate" = "yes" ]; then
+                echo "Alright lets see what this Project Gaia is all about"
+            else
+sleep 1
+echo "Redacted? What kinda user would have that name? You think as the computer boots up. "
+sleep 1
+echo "It loads into the terminal, and you type a couple of commands to locate the directory."
+sleep 2
+echo "Files, Documents...Patients? Was this some sort of hospital?."
+sleep 2
+echo "You wander around the directories a bit more, cautious not to alert any systems."
+sleep 2
+echo "What would you like to do?"
+fi
+while true; do
+    read -p "> " nsewuh
+    case $nsewuh in
+        n ) echo "ERROR....TRY AGAIN" ;;
+        s ) echo "Documents Documents aaaaaand nothing, great" ;;
+        w ) echo "Well lets see whats in the files....nothing here..strange" ;;
+        
+        e ) echo "ERROR....TRY AGAIN" ;;
+		u ) echo "Patients...I wonder what this is all about."
+		sleep 2
+		echo "Names...Medication...Operation Gaia?"
+		sleep 2
+		echo "IN THE YEAR 19XX, FIRST CONTACT WITH GAIA WAS MADE"
+		sleep 2
+		echo "[REDACTED] CREATED A CONTRACT, BECOMING THE FIRST TO EXHIBIT 'THE POWER'"
+		sleep 2
+		echo "ON XX/XX/19XX, THE POWER WAS USED TO CREATE THE ONLY KNOWN INSTANCE OF THE 5TH ELEMENT"
+		sleep 2
+		echo "THE QUINTESSENCE OF THE UNIVERSE....AETHER."
+		sleep 3
+		echo "XX/XX/20XX, ON THE FIRST DAY OF THE MILLENIUM XXXX XXXXXXX XXXXX XX XX XXXXX"
+		sleep 1
+		echo "The text turns into a garbled mess, and ends the document"
+		sleep 2
+		echo "Aether...Gaia...why does this all sound so familiar?"
+		sleep 2
+		echo "I need to look around for more information"
+		./manor2.sh
+		exit
+        ;;
+        	#Another floppy check, if they have the floppy yay, if not boo
+		h )floppystate=`cat ../logic/floppylogic.ben`
+            if [ "$floppystate" = "yes" ]; then 
+            	sleep 1
+		echo "Maybe this floppy disk has more information about this project aether"
+		sleep 2
+		echo "Well...Here goes nothing"
+		sleep 3
+		echo "You click the floppy disc in the machine, and it whirs to life, chirping like a digital bird"
+		sleep 3
+		echo "A new file shows up in the directory with a single word as the title"
+		sleep 3
+		echo "Veridian"
+		sleep 2
+		echo "Input disk 2 of Veridian now"
+		read -p "Press [Enter] when done"
+ 			   exit 
+ 		else
+ 		echo "There's a floppy drive here, maybe I can find some discs somewhere"
+		;;
+        * ) echo "I'm sorry, I don't understand you. Commands are: n, e, s, w, u and h.";;
+    esac
+done
+
+esac
+exit
